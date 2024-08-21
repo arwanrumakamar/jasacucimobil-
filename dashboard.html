@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin Jasa Cuci Mobil</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="fontawesome/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3f3cbb;
+            --white: #fff;
+            --light-gray: #f8f9fa;
+            --dark-gray: #6c757d;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 56px;
+            /* Untuk header */
+            padding-bottom: 60px;
+            /* Untuk footer */
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            z-index: 1030;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* Tambahkan shadow di sini */
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 56px;
+            /* Di bawah header */
+            left: 0;
+            bottom: 60px;
+            /* Di atas footer */
+            width: 250px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            overflow-y: auto;
+            z-index: 100;
+            box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+            /* Tambahkan shadow di sini */
+        }
+
+        .sidebar .nav-link {
+            color: var(--white);
+            padding: 10px 20px;
+        }
+
+        .sidebar .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .main-content {
+            margin-left: 250px;
+            /* Lebar sidebar */
+            padding: 20px;
+            padding-top: 76px;
+            /* 56px header + 20px padding */
+            background-color: var(--light-gray);
+        }
+
+        .footer {
+            position: fixed;
+            left: 250px;
+            /* Lebar sidebar */
+            bottom: 0;
+            right: 0;
+            height: 60px;
+            background-color: var(--white);
+            /* Ubah warna latar belakang */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            /* Tambahkan shadow di sini */
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+
+        .card-number {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: #e0e0e0;
+        }
+
+        .table {
+            background-color: var(--white);
+            border-radius: 10px;
+        }
+
+        .status {
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--white);
+        }
+
+        .status-terkirim {
+            background-color: #28a745;
+        }
+
+        .status-tertunda {
+            background-color: #ffc107;
+        }
+
+        .status-dikembalikan {
+            background-color: #dc3545;
+        }
+
+        .status-diproses {
+            background-color: #17a2b8;
+        }
+
+        @media (max-width: 767.98px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                top: 56px;
+                bottom: auto;
+                box-shadow: none;
+                /* Hilangkan shadow pada tampilan mobile */
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding-top: 20px;
+            }
+
+            .footer {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h3 class="m-0">Jasa Cuci Mobil</h3>
+    </header>
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="dashboard.html">
+                        <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profil.html">
+                        <i class="fas fa-user me-2"></i> Profil
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pelanggan.html">
+                        <i class="fas fa-users me-2"></i> Pelanggan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pendapatan.html">
+                        <i class="fas fa-money-bill-wave me-2"></i> Pendapatan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pengeluaran.html">
+                        <i class="fas fa-shopping-cart me-2"></i> Pengeluaran
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="transaksi.html">
+                        <i class="fas fa-exchange-alt me-2"></i> Transaksi
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="gajikaryawan.html">
+                        <i class="fas fa-hand-holding-usd me-2"></i> Gaji Karyawan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pesan.html">
+                        <i class="fas fa-envelope me-2"></i> Pesan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="booking.html">
+                        <i class="fas fa-calendar-alt me-2"></i> Booking
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="bantuan.html">
+                        <i class="fas fa-question-circle me-2"></i> Bantuan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pengaturan.html">
+                        <i class="fas fa-cog me-2"></i> Pengaturan
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="logoutLink">
+                        <i class="fas fa-sign-out-alt me-2"></i> Keluar
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Dashboard</h1>
+        </div>
+
+        <!-- Cards -->
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mb-4">
+            <div class="col">
+                <div class="card" onclick="updateChart('pelanggan')">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="card-title">Total Pelanggan</h5>
+                            <p class="card-number">10</p>
+                        </div>
+                        <i class="fas fa-users card-icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" onclick="updateChart('pendapatan')">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="card-title">Pendapatan</h5>
+                            <p class="card-number">Rp 15.000.000</p>
+                        </div>
+                        <i class="fas fa-chart-line card-icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" onclick="updateChart('pengeluaran')">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="card-title">Pengeluaran</h5>
+                            <p class="card-number">Rp 8.500.000</p>
+                        </div>
+                        <i class="fas fa-money-bill-wave card-icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" onclick="updateChart('transaksi')">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="card-title">Transaksi</h5>
+                            <p class="card-number">284</p>
+                        </div>
+                        <i class="fas fa-exchange-alt card-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Statistik</h5>
+                <canvas id="dashboardChart"></canvas>
+            </div>
+        </div>
+
+        
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <span class="text-muted">&copy; 2024 Jasa Cuci Mobil. Kelompok 6.</span>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        let currentChart;
+
+        const chartData = {
+            pelanggan: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun'],
+                datasets: [{
+                    label: 'Jumlah Pelanggan',
+                    data: [5, 7, 8, 10, 12, 10],
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }]
+            },
+            pendapatan: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun'],
+                datasets: [{
+                    label: 'Pendapatan (Juta Rupiah)',
+                    data: [10, 12, 15, 13, 18, 15],
+                    borderColor: 'rgb(54, 162, 235)',
+                    tension: 0.1
+                }]
+            },
+            pengeluaran: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun'],
+                datasets: [{
+                    label: 'Pengeluaran (Juta Rupiah)',
+                    data: [5, 7, 6, 8, 9, 8.5],
+                    borderColor: 'rgb(255, 99, 132)',
+                    tension: 0.1
+                }]
+            },
+            transaksi: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun'],
+                datasets: [{
+                    label: 'Jumlah Transaksi',
+                    data: [50, 70, 90, 100, 120, 284],
+                    borderColor: 'rgb(255, 159, 64)',
+                    tension: 0.1
+                }]
+            }
+        };
+
+        function updateChart(type) {
+            const ctx = document.getElementById('dashboardChart').getContext('2d');
+
+            if (currentChart) {
+                currentChart.destroy();
+            }
+
+            currentChart = new Chart(ctx, {
+                type: 'line',
+                data: chartData[type],
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        // Inisialisasi chart dengan data pelanggan
+        updateChart('pelanggan');
+
+        document.getElementById('logoutLink').addEventListener('click', function (e) {
+            e.preventDefault();
+            if (confirm('Anda yakin ingin keluar?')) {
+                window.location.href = 'landingpage.html';
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin Jasa Cuci Mobil</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="fontawesome/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3f3cbb;
+            --white: #fff;
+            --light-gray: #f8f9fa;
+            --dark-gray: #6c757d;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 56px; /* Untuk header */
+            padding-bottom: 60px; /* Untuk footer */
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            z-index: 1030;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Tambahkan shadow di sini */
+        }
+        
+        .sidebar {
+            position: fixed;
+            top: 56px; /* Di bawah header */
+            left: 0;
+            bottom: 60px; /* Di atas footer */
+            width: 250px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            overflow-y: auto;
+            z-index: 100;
+            box-shadow: 2px 0 4px rgba(0,0,0,0.1); /* Tambahkan shadow di sini */
+        }
+        
+        .sidebar .nav-link {
+            color: var(--white);
+            padding: 10px 20px;
+        }
+        
+        .sidebar .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .main-content {
+            margin-left: 250px; /* Lebar sidebar */
+            padding: 20px;
+            padding-top: 76px; /* 56px header + 20px padding */
+            background-color: var(--light-gray);
+        }
+        
+        .footer {
+            position: fixed;
+            left: 250px; /* Lebar sidebar */
+            bottom: 0;
+            right: 0;
+            height: 60px;
+            background-color: var(--white); /* Ubah warna latar belakang */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1); /* Tambahkan shadow di sini */
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-title {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        .card-number {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .card-icon {
+            font-size: 2rem;
+            color: #e0e0e0;
+        }
+        
+        .table {
+            background-color: var(--white);
+            border-radius: 10px;
+        }
+        
+        .status {
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--white);
+        }
+        
+        .status-terkirim { background-color: #28a745; }
+        .status-tertunda { background-color: #ffc107; }
+        .status-dikembalikan { background-color: #dc3545; }
+        .status-diproses { background-color: #17a2b8; }
+        
+        @media (max-width: 767.98px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                top: 56px;
+                bottom: auto;
+                box-shadow: none; /* Hilangkan shadow pada tampilan mobile */
+            }
+            .main-content {
+                margin-left: 0;
+                padding-top: 20px;
+            }
+            .footer {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h3 class="m-0">Jasa Cuci Mobil</h3>
+    </header>
+
+     <!-- Sidebar -->
+     <nav class="sidebar">
+        <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="dashboard.html">
+                        <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profil.html">
+                        <i class="fas fa-user me-2"></i> Profil
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pelanggan.html">
+                        <i class="fas fa-users me-2"></i> Pelanggan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pendapatan.html">
+                        <i class="fas fa-money-bill-wave me-2"></i> Pendapatan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pengeluaran.html">
+                        <i class="fas fa-shopping-cart me-2"></i> Pengeluaran
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="transaksi.html">
+                        <i class="fas fa-exchange-alt me-2"></i> Transaksi
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="gajikaryawan.html">
+                        <i class="fas fa-hand-holding-usd me-2"></i> Gaji Karyawan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pesan.html">
+                        <i class="fas fa-envelope me-2"></i> Pesan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="booking.html">
+                        <i class="fas fa-calendar-alt me-2"></i> Booking
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="bantuan.html">
+                        <i class="fas fa-question-circle me-2"></i> Bantuan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pengaturan.html">
+                        <i class="fas fa-cog me-2"></i> Pengaturan
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="logoutLink">
+                        <i class="fas fa-sign-out-alt me-2"></i> Keluar
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+            <!-- Main content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Pengaturan</h1>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4">Warna Tema</h5>
+                                <form id="colorForm">
+                                    <div class="mb-3">
+                                        <label for="primaryColor" class="form-label">Warna Utama</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text color-preview" id="primaryColorPreview"></span>
+                                            <input type="color" class="form-control form-control-color" id="primaryColor" value="#3f3cbb">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="secondaryColor" class="form-label">Warna Sekunder</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text color-preview" id="secondaryColorPreview"></span>
+                                            <input type="color" class="form-control form-control-color" id="secondaryColor" value="#6c757d">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="backgroundColor" class="form-label">Warna Latar Belakang</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text color-preview" id="backgroundColorPreview"></span>
+                                            <input type="color" class="form-control form-control-color" id="backgroundColor" value="#f8f9fa">
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4">Gaya Tampilan</h5>
+                                <form id="styleForm">
+                                    <div class="mb-3">
+                                        <label for="fontStyle" class="form-label">Gaya Font</label>
+                                        <select class="form-select" id="fontStyle">
+                                            <option value="'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Segoe UI</option>
+                                            <option value="Arial, sans-serif">Arial</option>
+                                            <option value="'Helvetica Neue', Helvetica, Arial, sans-serif">Helvetica</option>
+                                            <option value="'Roboto', sans-serif">Roboto</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="fontSize" class="form-label">Ukuran Font</label>
+                                        <input type="number" class="form-control" id="fontSize" value="16">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+ <!-- Footer -->
+ <footer class="footer">
+    <span class="text-muted">&copy; 2024 Jasa Cuci Mobil. Kelompok 6.</span>
+</footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+         document.getElementById('logoutLink').addEventListener('click', function(e) {
+            e.preventDefault(); // Mencegah link langsung diakses
+            if (confirm('Anda yakin ingin keluar?')) {
+                window.location.href = 'landingpage.html'; // Arahkan ke landing page setelah konfirmasi
+            }
+        });
+    </script>
+</body>
+</html>

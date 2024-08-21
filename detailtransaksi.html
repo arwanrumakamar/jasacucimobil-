@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Transaksi - Jasa Cuci Mobil</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="fontawesome/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3f3cbb;
+            --white: #fff;
+            --light-gray: #f8f9fa;
+            --dark-gray: #6c757d;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 56px; /* Untuk header */
+            padding-bottom: 60px; /* Untuk footer */
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            z-index: 1030;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar {
+            position: fixed;
+            top: 56px; /* Di bawah header */
+            left: 0;
+            bottom: 60px; /* Di atas footer */
+            width: 250px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            overflow-y: auto;
+            z-index: 100;
+            box-shadow: 2px 0 4px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar .nav-link {
+            color: var(--white);
+            padding: 10px 20px;
+        }
+        
+        .sidebar .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .main-content {
+            margin-left: 250px; /* Lebar sidebar */
+            padding: 20px;
+            padding-top: 76px; /* 56px header + 20px padding */
+            background-color: var(--light-gray);
+        }
+        
+        .footer {
+            position: fixed;
+            left: 250px; /* Lebar sidebar */
+            bottom: 0;
+            right: 0;
+            height: 60px;
+            background-color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .status {
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--white);
+        }
+        
+        .status-selesai { background-color: #28a745; }
+        .status-proses { background-color: #ffc107; }
+        .status-batal { background-color: #dc3545; }
+        .status-terjadwal { background-color: #17a2b8; }
+        
+        @media (max-width: 767.98px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                top: 56px;
+                bottom: auto;
+                box-shadow: none;
+            }
+            .main-content {
+                margin-left: 0;
+                padding-top: 20px;
+            }
+            .footer {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h3 class="m-0">Jasa Cuci Mobil</h3>
+    </header>
+
+     <!-- Sidebar -->
+     <nav class="sidebar">
+        <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="dashboard.html">
+                        <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profil.html">
+                        <i class="fas fa-user me-2"></i> Profil
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pelanggan.html">
+                        <i class="fas fa-users me-2"></i> Pelanggan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pendapatan.html">
+                        <i class="fas fa-money-bill-wave me-2"></i> Pendapatan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pengeluaran.html">
+                        <i class="fas fa-shopping-cart me-2"></i> Pengeluaran
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="transaksi.html">
+                        <i class="fas fa-exchange-alt me-2"></i> Transaksi
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="gajikaryawan.html">
+                        <i class="fas fa-hand-holding-usd me-2"></i> Gaji Karyawan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pesan.html">
+                        <i class="fas fa-envelope me-2"></i> Pesan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="booking.html">
+                        <i class="fas fa-calendar-alt me-2"></i> Booking
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="bantuan.html">
+                        <i class="fas fa-question-circle me-2"></i> Bantuan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pengaturan.html">
+                        <i class="fas fa-cog me-2"></i> Pengaturan
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="logoutLink">
+                        <i class="fas fa-sign-out-alt me-2"></i> Keluar
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="main-content">
+        <div class="container mt-4">
+            <h2>Detail Transaksi</h2>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3 id="idTransaksi"></h3>
+                            <p><strong>Tanggal:</strong> <span id="tanggalTransaksi"></span></p>
+                            <p><strong>Pelanggan:</strong> <span id="pelangganTransaksi"></span></p>
+                            <p><strong>Layanan:</strong> <span id="layananTransaksi"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Harga:</strong> <span id="hargaTransaksi"></span></p>
+                            <p><strong>Status:</strong> <span id="statusTransaksi"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="transaksi.html" class="btn btn-primary mt-3">Kembali ke Daftar Transaksi</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <span class="text-muted">&copy; 2024 Jasa Cuci Mobil. Kelompok 6.</span>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Ambil data transaksi dari localStorage
+        const detailTransaksi = JSON.parse(localStorage.getItem('detailTransaksi'));
+
+        // Tampilkan data transaksi
+        if (detailTransaksi) {
+            document.getElementById('idTransaksi').textContent = `Transaksi #${detailTransaksi.id}`;
+            document.getElementById('tanggalTransaksi').textContent = detailTransaksi.tanggal;
+            document.getElementById('pelangganTransaksi').textContent = detailTransaksi.pelanggan;
+            document.getElementById('layananTransaksi').textContent = detailTransaksi.layanan;
+            document.getElementById('hargaTransaksi').textContent = `Rp ${detailTransaksi.harga.toLocaleString()}`;
+            
+            const statusElement = document.getElementById('statusTransaksi');
+            statusElement.textContent = detailTransaksi.status;
+            statusElement.className = `status status-${detailTransaksi.status.toLowerCase()}`;
+        } else {
+            alert('Data transaksi tidak ditemukan');
+            window.location.href = 'transaksi.html';
+        }
+
+        // Fungsi logout
+        document.getElementById('logoutLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            if (confirm('Anda yakin ingin keluar?')) {
+                window.location.href = 'landingpage.html';
+            }
+        });
+    </script>
+</body>
+</html>

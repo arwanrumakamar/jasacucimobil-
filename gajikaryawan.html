@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin Jasa Cuci Mobil</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="fontawesome/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3f3cbb;
+            --white: #fff;
+            --light-gray: #f8f9fa;
+            --dark-gray: #6c757d;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 56px; /* Untuk header */
+            padding-bottom: 60px; /* Untuk footer */
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            z-index: 1030;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Tambahkan shadow di sini */
+        }
+        
+        .sidebar {
+            position: fixed;
+            top: 56px; /* Di bawah header */
+            left: 0;
+            bottom: 60px; /* Di atas footer */
+            width: 250px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            overflow-y: auto;
+            z-index: 100;
+            box-shadow: 2px 0 4px rgba(0,0,0,0.1); /* Tambahkan shadow di sini */
+        }
+        
+        .sidebar .nav-link {
+            color: var(--white);
+            padding: 10px 20px;
+        }
+        
+        .sidebar .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .main-content {
+            margin-left: 250px; /* Lebar sidebar */
+            padding: 20px;
+            padding-top: 76px; /* 56px header + 20px padding */
+            background-color: var(--light-gray);
+        }
+        
+        .footer {
+            position: fixed;
+            left: 250px; /* Lebar sidebar */
+            bottom: 0;
+            right: 0;
+            height: 60px;
+            background-color: var(--white); /* Ubah warna latar belakang */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1); /* Tambahkan shadow di sini */
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-title {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        .card-number {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .card-icon {
+            font-size: 2rem;
+            color: #e0e0e0;
+        }
+        
+        .table {
+            background-color: var(--white);
+            border-radius: 10px;
+        }
+        
+        .status {
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--white);
+        }
+        
+        .status-terkirim { background-color: #28a745; }
+        .status-tertunda { background-color: #ffc107; }
+        .status-dikembalikan { background-color: #dc3545; }
+        .status-diproses { background-color: #17a2b8; }
+        
+        @media (max-width: 767.98px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                top: 56px;
+                bottom: auto;
+                box-shadow: none; /* Hilangkan shadow pada tampilan mobile */
+            }
+            .main-content {
+                margin-left: 0;
+                padding-top: 20px;
+            }
+            .footer {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h3 class="m-0">Jasa Cuci Mobil</h3>
+    </header>
+
+     <!-- Sidebar -->
+     <nav class="sidebar">
+        <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="dashboard.html">
+                        <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profil.html">
+                        <i class="fas fa-user me-2"></i> Profil
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pelanggan.html">
+                        <i class="fas fa-users me-2"></i> Pelanggan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pendapatan.html">
+                        <i class="fas fa-money-bill-wave me-2"></i> Pendapatan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pengeluaran.html">
+                        <i class="fas fa-shopping-cart me-2"></i> Pengeluaran
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="transaksi.html">
+                        <i class="fas fa-exchange-alt me-2"></i> Transaksi
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="gajikaryawan.html">
+                        <i class="fas fa-hand-holding-usd me-2"></i> Gaji Karyawan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pesan.html">
+                        <i class="fas fa-envelope me-2"></i> Pesan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="booking.html">
+                        <i class="fas fa-calendar-alt me-2"></i> Booking
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="bantuan.html">
+                        <i class="fas fa-question-circle me-2"></i> Bantuan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pengaturan.html">
+                        <i class="fas fa-cog me-2"></i> Pengaturan
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="logoutLink">
+                        <i class="fas fa-sign-out-alt me-2"></i> Keluar
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+            <!-- Main content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Gaji Karyawan</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#tambahGajiModal">
+                            <i class="fas fa-plus"></i> Tambah Gaji
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Cards -->
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mb-4">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5 class="card-title">Total Gaji Bulan Ini</h5>
+                                    <p class="card-number">Rp 25.000.000</p>
+                                </div>
+                                <i class="fas fa-money-bill-wave card-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5 class="card-title">Jumlah Karyawan</h5>
+                                    <p class="card-number">10</p>
+                                </div>
+                                <i class="fas fa-users card-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5 class="card-title">Rata-rata Gaji</h5>
+                                    <p class="card-number">Rp 2.500.000</p>
+                                </div>
+                                <i class="fas fa-chart-bar card-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5 class="card-title">Total Bonus</h5>
+                                    <p class="card-number">Rp 5.000.000</p>
+                                </div>
+                                <i class="fas fa-gift card-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title">Daftar Gaji Karyawan</h5>
+                            <a href="#" class="btn btn-primary btn-sm" id="unduhLaporan">Unduh Laporan</a>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Foto</th>
+                                        <th>Nama Karyawan</th>
+                                        <th>Jabatan</th>
+                                        <th>Gaji Pokok</th>
+                                        <th>Bonus</th>
+                                        <th>Total Gaji</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="daftarGajiKaryawan">
+                                    <!-- Data gaji karyawan akan ditambahkan di sini oleh JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal Tambah Gaji -->
+    <div class="modal fade" id="tambahGajiModal" tabindex="-1" aria-labelledby="tambahGajiModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tambahGajiModalLabel">Tambah Gaji Karyawan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formTambahGaji">
+                        <div class="mb-3">
+                            <label for="namaKaryawan" class="form-label">Nama Karyawan</label>
+                            <input type="text" class="form-control" id="namaKaryawan" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="jabatan" class="form-label">Jabatan</label>
+                            <input type="text" class="form-control" id="jabatan" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="gajiPokok" class="form-label">Gaji Pokok</label>
+                            <input type="number" class="form-control" id="gajiPokok" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="bonus" class="form-label">Bonus</label>
+                            <input type="number" class="form-control" id="bonus" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-primary" id="simpanGaji">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+ <!-- Footer -->
+ <footer class="footer">
+    <span class="text-muted">&copy; 2024 Jasa Cuci Mobil. Kelompok 6.</span>
+</footer>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+<script>
+    // Data dummy gaji karyawan
+    const gajiKaryawanDummy = [
+        { id: 1, nama: "Lulu", jabatan: "Manajer", gajiPokok: 5000000, bonus: 1000000, totalGaji: 6000000, foto: "img/avatar/2.jpeg" },
+        { id: 2, nama: "Letus", jabatan: "Supervisor", gajiPokok: 4000000, bonus: 800000, totalGaji: 4800000, foto: "img/avatar/1.jpeg" },
+        { id: 3, nama: "Vika", jabatan: "Pencuci Mobil", gajiPokok: 3000000, bonus: 500000, totalGaji: 3500000, foto: "img/avatar/3.jpeg" },
+        { id: 4, nama: "Zani", jabatan: "Kasir", gajiPokok: 3500000, bonus: 700000, totalGaji: 4200000, foto: "img/avatar/4.jpeg" }
+    ];
+
+    // Fungsi untuk menampilkan data gaji karyawan
+    function tampilkanGajiKaryawan() {
+        const daftarGajiKaryawan = document.getElementById("daftarGajiKaryawan");
+        daftarGajiKaryawan.innerHTML = "";
+
+        gajiKaryawanDummy.forEach(gaji => {
+            const row = `
+                <tr>
+                    <td>${gaji.id}</td>
+                    <td><img src="${gaji.foto}" alt="${gaji.nama}" width="50" height="50" class="rounded-circle"></td>
+                    <td>${gaji.nama}</td>
+                    <td>${gaji.jabatan}</td>
+                    <td>Rp ${gaji.gajiPokok.toLocaleString()}</td>
+                    <td>Rp ${gaji.bonus.toLocaleString()}</td>
+                    <td>Rp ${gaji.totalGaji.toLocaleString()}</td>
+                    <td>
+                        <button class="btn btn-sm btn-info" onclick="detailGajiKaryawan(${gaji.id})">Detail</button>
+                        <button class="btn btn-sm btn-warning" onclick="editGajiKaryawan(${gaji.id})">Edit</button>
+                        <button class="btn btn-sm btn-danger" onclick="hapusGajiKaryawan(${gaji.id})">Hapus</button>
+                    </td>
+                </tr>
+            `;
+            daftarGajiKaryawan.innerHTML += row;
+        });
+    }
+
+    // Fungsi untuk mengarahkan ke halaman detail gaji karyawan
+    function detailGajiKaryawan(id) {
+        const gaji = gajiKaryawanDummy.find(g => g.id === id);
+        localStorage.setItem('detailGajiKaryawan', JSON.stringify(gaji));
+        window.location.href = 'detailgajikaryawan.html';
+    }
+
+    // Fungsi untuk menambah gaji karyawan baru
+    function tambahGajiKaryawan() {
+        const namaKaryawan = document.getElementById('namaKaryawan').value;
+        const jabatan = document.getElementById('jabatan').value;
+        const gajiPokok = parseInt(document.getElementById('gajiPokok').value);
+        const bonus = parseInt(document.getElementById('bonus').value);
+
+        const newId = gajiKaryawanDummy.length + 1;
+        const newGajiKaryawan = {
+            id: newId,
+            nama: namaKaryawan,
+            jabatan: jabatan,
+            gajiPokok: gajiPokok,
+            bonus: bonus,
+            totalGaji: gajiPokok + bonus
+        };
+        gajiKaryawanDummy.push(newGajiKaryawan);
+        tampilkanGajiKaryawan();
+
+        // Tutup modal setelah menambah gaji karyawan
+        const modal = bootstrap.Modal.getInstance(document.getElementById('tambahGajiModal'));
+        modal.hide();
+
+        // Reset form
+        document.getElementById('formTambahGaji').reset();
+    }
+
+    // Fungsi-fungsi aksi
+    function editGajiKaryawan(id) {
+        alert(`Edit gaji karyawan dengan ID: ${id}`);
+        // Implementasi edit gaji karyawan
+    }
+
+    function hapusGajiKaryawan(id) {
+        if (confirm(`Apakah Anda yakin ingin menghapus gaji karyawan dengan ID: ${id}?`)) {
+            const index = gajiKaryawanDummy.findIndex(g => g.id === id);
+            if (index !== -1) {
+                gajiKaryawanDummy.splice(index, 1);
+                tampilkanGajiKaryawan();
+            }
+        }
+    }
+
+    // Fungsi untuk mengunduh laporan
+    function unduhLaporan() {
+        // Membuat string CSV
+        let csv = 'ID,Nama Karyawan,Jabatan,Gaji Pokok,Bonus,Total Gaji\n';
+        gajiKaryawanDummy.forEach(gaji => {
+            csv += `${gaji.id},${gaji.nama},${gaji.jabatan},${gaji.gajiPokok},${gaji.bonus},${gaji.totalGaji}\n`;
+        });
+
+        // Membuat Blob dan mengunduh file
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement("a");
+        if (link.download !== undefined) {
+            const url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", "laporan_gaji_karyawan.csv");
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    }
+
+    // Event listener untuk tombol Tambah Gaji
+    document.getElementById("simpanGaji").addEventListener("click", tambahGajiKaryawan);
+
+    // Event listener untuk tombol Unduh Laporan
+    document.getElementById("unduhLaporan").addEventListener("click", unduhLaporan);
+
+    // Fungsi logout
+    document.getElementById('logoutLink').addEventListener('click', function(e) {
+        e.preventDefault();
+        if (confirm('Anda yakin ingin keluar?')) {
+            window.location.href = 'landingpage.html';
+        }
+    });
+
+    // Tampilkan data gaji karyawan saat halaman dimuat
+    window.onload = tampilkanGajiKaryawan;
+</script>
+</body>
+</html>

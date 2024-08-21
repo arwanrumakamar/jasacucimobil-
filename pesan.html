@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin Jasa Cuci Mobil</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="fontawesome/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3f3cbb;
+            --white: #fff;
+            --light-gray: #f8f9fa;
+            --dark-gray: #6c757d;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 56px; /* Untuk header */
+            padding-bottom: 60px; /* Untuk footer */
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            z-index: 1030;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Tambahkan shadow di sini */
+        }
+        
+        .sidebar {
+            position: fixed;
+            top: 56px; /* Di bawah header */
+            left: 0;
+            bottom: 60px; /* Di atas footer */
+            width: 250px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            overflow-y: auto;
+            z-index: 100;
+            box-shadow: 2px 0 4px rgba(0,0,0,0.1); /* Tambahkan shadow di sini */
+        }
+        
+        .sidebar .nav-link {
+            color: var(--white);
+            padding: 10px 20px;
+        }
+        
+        .sidebar .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .main-content {
+            margin-left: 250px; /* Lebar sidebar */
+            padding: 20px;
+            padding-top: 76px; /* 56px header + 20px padding */
+            background-color: var(--light-gray);
+        }
+        
+        .footer {
+            position: fixed;
+            left: 250px; /* Lebar sidebar */
+            bottom: 0;
+            right: 0;
+            height: 60px;
+            background-color: var(--white); /* Ubah warna latar belakang */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1); /* Tambahkan shadow di sini */
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-title {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        .card-number {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .card-icon {
+            font-size: 2rem;
+            color: #e0e0e0;
+        }
+        
+        .table {
+            background-color: var(--white);
+            border-radius: 10px;
+        }
+        
+        .status {
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--white);
+        }
+        
+        .status-terkirim { background-color: #28a745; }
+        .status-tertunda { background-color: #ffc107; }
+        .status-dikembalikan { background-color: #dc3545; }
+        .status-diproses { background-color: #17a2b8; }
+        
+        @media (max-width: 767.98px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                top: 56px;
+                bottom: auto;
+                box-shadow: none; /* Hilangkan shadow pada tampilan mobile */
+            }
+            .main-content {
+                margin-left: 0;
+                padding-top: 20px;
+            }
+            .footer {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h3 class="m-0">Jasa Cuci Mobil</h3>
+    </header>
+
+     <!-- Sidebar -->
+     <nav class="sidebar">
+        <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="dashboard.html">
+                        <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profil.html">
+                        <i class="fas fa-user me-2"></i> Profil
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pelanggan.html">
+                        <i class="fas fa-users me-2"></i> Pelanggan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pendapatan.html">
+                        <i class="fas fa-money-bill-wave me-2"></i> Pendapatan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pengeluaran.html">
+                        <i class="fas fa-shopping-cart me-2"></i> Pengeluaran
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="transaksi.html">
+                        <i class="fas fa-exchange-alt me-2"></i> Transaksi
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="gajikaryawan.html">
+                        <i class="fas fa-hand-holding-usd me-2"></i> Gaji Karyawan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pesan.html">
+                        <i class="fas fa-envelope me-2"></i> Pesan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="booking.html">
+                        <i class="fas fa-calendar-alt me-2"></i> Booking
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="bantuan.html">
+                        <i class="fas fa-question-circle me-2"></i> Bantuan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pengaturan.html">
+                        <i class="fas fa-cog me-2"></i> Pengaturan
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="logoutLink">
+                        <i class="fas fa-sign-out-alt me-2"></i> Keluar
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+            <!-- Main content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Pemesanan Cuci Mobil</h1>
+                    <button class="btn btn-primary" id="tambahPesanan">Tambah Pesanan</button>
+                </div>
+
+                <!-- Tabel Pesanan -->
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Pengirim</th>
+                                <th>Subjek</th>
+                                <th>Tanggal</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="daftarPesan">
+                            <!-- Data pesan akan ditambahkan di sini oleh JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal Tambah Pesanan -->
+    <div class="modal fade" id="modalTambahPesanan" tabindex="-1" aria-labelledby="modalTambahPesananLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTambahPesananLabel">Tambah Pesanan Baru</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formTambahPesanan">
+                        <div class="mb-3">
+                            <label for="namaPelanggan" class="form-label">Nama Pelanggan</label>
+                            <input type="text" class="form-control" id="namaPelanggan" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="jenisMobil" class="form-label">Jenis Mobil</label>
+                            <input type="text" class="form-control" id="jenisMobil" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tanggal" class="form-label">Tanggal</label>
+                            <input type="date" class="form-control" id="tanggal" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="waktu" class="form-label">Waktu</label>
+                            <input type="time" class="form-control" id="waktu" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-primary" id="simpanPesanan">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Footer -->
+     <footer class="footer">
+        <span class="text-muted">&copy; 2024 Jasa Cuci Mobil. Kelompok 6.</span>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Data dummy pesan
+        const pesanDummy = [
+            { id: 1, pengirim: "Yohana", subjek: "Pertanyaan tentang layanan", isi: "Halo, saya ingin bertanya tentang layanan cuci mobil premium. Apa saja yang termasuk dalam paket ini?", tanggal: "2023-05-01", status: "Belum Dibaca" },
+            { id: 2, pengirim: "Riko", subjek: "Konfirmasi janji temu", isi: "Selamat siang, saya ingin mengkonfirmasi janji temu untuk cuci mobil besok pukul 10:00. Terima kasih.", tanggal: "2023-05-02", status: "Sudah Dibaca" },
+            { id: 3, pengirim: "Siti", subjek: "Komplain layanan", isi: "Mohon maaf, saya kurang puas dengan hasil cuci mobil kemarin. Bisakah kita mendiskusikan hal ini?", tanggal: "2023-05-03", status: "Dibalas" }
+        ];
+
+        // Fungsi untuk menampilkan data pesan
+        function tampilkanPesan() {
+            const daftarPesan = document.getElementById("daftarPesan");
+            daftarPesan.innerHTML = "";
+
+            pesanDummy.forEach(pesan => {
+                const row = `
+                    <tr>
+                        <td>${pesan.id}</td>
+                        <td>${pesan.pengirim}</td>
+                        <td>${pesan.subjek}</td>
+                        <td>${pesan.tanggal}</td>
+                        <td>${pesan.status}</td>
+                        <td>
+                            <button class="btn btn-sm btn-info" onclick="detailPesan(${pesan.id})">Detail</button>
+                            <button class="btn btn-sm btn-warning" onclick="balasPesan(${pesan.id})">Balas</button>
+                            <button class="btn btn-sm btn-danger" onclick="hapusPesan(${pesan.id})">Hapus</button>
+                        </td>
+                    </tr>
+                `;
+                daftarPesan.innerHTML += row;
+            });
+        }
+
+        // Fungsi untuk mengarahkan ke halaman detail pesan
+        function detailPesan(id) {
+            const pesan = pesanDummy.find(p => p.id === id);
+            localStorage.setItem('detailPesan', JSON.stringify(pesan));
+            window.location.href = 'detailpesan.html';
+        }
+
+        // Fungsi-fungsi aksi (placeholder)
+        function balasPesan(id) {
+            alert(`Balas pesan dengan ID: ${id}`);
+        }
+
+        function hapusPesan(id) {
+            if (confirm(`Apakah Anda yakin ingin menghapus pesan dengan ID: ${id}?`)) {
+                const index = pesanDummy.findIndex(p => p.id === id);
+                if (index !== -1) {
+                    pesanDummy.splice(index, 1);
+                    tampilkanPesan();
+                }
+            }
+        }
+
+        // Event listener untuk tombol Tambah Pesanan
+        document.getElementById("tambahPesanan").addEventListener("click", function() {
+            const modal = new bootstrap.Modal(document.getElementById('modalTambahPesanan'));
+            modal.show();
+        });
+
+        // Event listener untuk tombol Simpan di dalam modal
+        document.getElementById("simpanPesanan").addEventListener("click", tambahPesanan);
+
+        // Tampilkan data pesan saat halaman dimuat
+        window.onload = tampilkanPesan;
+
+        document.getElementById('logoutLink').addEventListener('click', function(e) {
+            e.preventDefault(); // Mencegah link langsung diakses
+            if (confirm('Anda yakin ingin keluar?')) {
+                window.location.href = 'landingpage.html'; // Arahkan ke landing page setelah konfirmasi
+            }
+        });
+    </script>
+</body>
+</html>

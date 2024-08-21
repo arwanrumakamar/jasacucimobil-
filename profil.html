@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin Jasa Cuci Mobil</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="fontawesome/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3f3cbb;
+            --white: #fff;
+            --light-gray: #f8f9fa;
+            --dark-gray: #6c757d;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 56px; /* Untuk header */
+            padding-bottom: 60px; /* Untuk footer */
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            z-index: 1030;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Tambahkan shadow di sini */
+        }
+        
+        .sidebar {
+            position: fixed;
+            top: 56px; /* Di bawah header */
+            left: 0;
+            bottom: 60px; /* Di atas footer */
+            width: 250px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            overflow-y: auto;
+            z-index: 100;
+            box-shadow: 2px 0 4px rgba(0,0,0,0.1); /* Tambahkan shadow di sini */
+        }
+        
+        .sidebar .nav-link {
+            color: var(--white);
+            padding: 10px 20px;
+        }
+        
+        .sidebar .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .main-content {
+            margin-left: 250px; /* Lebar sidebar */
+            padding: 20px;
+            padding-top: 76px; /* 56px header + 20px padding */
+            background-color: var(--light-gray);
+        }
+        
+        .footer {
+            position: fixed;
+            left: 250px; /* Lebar sidebar */
+            bottom: 0;
+            right: 0;
+            height: 60px;
+            background-color: var(--white); /* Ubah warna latar belakang */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            box-shadow: 0 -2px 4px rgba(0,0,0,0.1); /* Tambahkan shadow di sini */
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-title {
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+        
+        .card-number {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .card-icon {
+            font-size: 2rem;
+            color: #e0e0e0;
+        }
+        
+        .table {
+            background-color: var(--white);
+            border-radius: 10px;
+        }
+        
+        .status {
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--white);
+        }
+        
+        .status-terkirim { background-color: #28a745; }
+        .status-tertunda { background-color: #ffc107; }
+        .status-dikembalikan { background-color: #dc3545; }
+        .status-diproses { background-color: #17a2b8; }
+        
+        @media (max-width: 767.98px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                top: 56px;
+                bottom: auto;
+                box-shadow: none; /* Hilangkan shadow pada tampilan mobile */
+            }
+            .main-content {
+                margin-left: 0;
+                padding-top: 20px;
+            }
+            .footer {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h3 class="m-0">Jasa Cuci Mobil</h3>
+    </header>
+
+     <!-- Sidebar -->
+     <nav class="sidebar">
+        <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="dashboard.html">
+                        <i class="fas fa-tachometer-alt me-2"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profil.html">
+                        <i class="fas fa-user me-2"></i> Profil
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pelanggan.html">
+                        <i class="fas fa-users me-2"></i> Pelanggan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pendapatan.html">
+                        <i class="fas fa-money-bill-wave me-2"></i> Pendapatan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pengeluaran.html">
+                        <i class="fas fa-shopping-cart me-2"></i> Pengeluaran
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="transaksi.html">
+                        <i class="fas fa-exchange-alt me-2"></i> Transaksi
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="gajikaryawan.html">
+                        <i class="fas fa-hand-holding-usd me-2"></i> Gaji Karyawan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pesan.html">
+                        <i class="fas fa-envelope me-2"></i> Pesan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="booking.html">
+                        <i class="fas fa-calendar-alt me-2"></i> Booking
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="bantuan.html">
+                        <i class="fas fa-question-circle me-2"></i> Bantuan
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pengaturan.html">
+                        <i class="fas fa-cog me-2"></i> Pengaturan
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="logoutLink">
+                        <i class="fas fa-sign-out-alt me-2"></i> Keluar
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+            <!-- Main content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Profil Admin</h1>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <div class="card-body text-center">
+                                <img src="img/avatar/1.jpeg" alt="Foto Profil Admin" class="profile-picture mb-3">
+                                <h5 class="card-title">Anis</h5>
+                                <p class="card-text text-muted">Administrator</p>
+                                <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                                    <i class="fas fa-edit me-2"></i>Edit Profil
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4">Informasi Pribadi</h5>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Nama Lengkap</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        Anis
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Email</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        anis@gmail.com
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Nomor Telepon</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        +62 812 3456 7890
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Alamat</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        Jl. Contoh No. 123, Kota Contoh, 12345
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Tanggal Lahir</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        1 Januari 1990
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Jenis Kelamin</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        Laki-laki
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4">Informasi Akun</h5>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Username</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        Anis
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Peran</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        Administrator
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Tanggal Bergabung</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        1 Januari 2024
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Status Akun</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <span class="badge bg-success">Aktif</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal Edit Profil -->
+    <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editProfileModalLabel">Edit Profil</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editProfileForm">
+                        <div class="mb-3">
+                            <label for="editName" class="form-label">Nama Lengkap</label>
+                            <input type="text" class="form-control" id="editName" value="John Doe">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="editEmail" value="johndoe@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editPhone" class="form-label">Nomor Telepon</label>
+                            <input type="tel" class="form-control" id="editPhone" value="+62 812 3456 7890">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editAddress" class="form-label">Alamat</label>
+                            <textarea class="form-control" id="editAddress" rows="3">Jl. Contoh No. 123, Kota Fakfak, 12345</textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editBirthdate" class="form-label">Tanggal Lahir</label>
+                            <input type="date" class="form-control" id="editBirthdate" value="1990-01-01">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editGender" class="form-label">Jenis Kelamin</label>
+                            <select class="form-select" id="editGender">
+                                <option value="Laki-laki" selected>Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-primary" id="saveProfileChanges">Simpan Perubahan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Footer -->
+     <footer class="footer">
+        <span class="text-muted">&copy; 2024 Jasa Cuci Mobil. Kelompok 6.</span>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+
+        document.getElementById('saveProfileChanges').addEventListener('click', function() {
+            // Di sini Anda dapat menambahkan logika untuk menyimpan perubahan profil
+            alert('Perubahan profil telah disimpan!');
+            $('#editProfileModal').modal('hide');
+        });
+        document.getElementById('logoutLink').addEventListener('click', function(e) {
+            e.preventDefault(); // Mencegah link langsung diakses
+            if (confirm('Anda yakin ingin keluar?')) {
+                window.location.href = 'landingpage.html'; // Arahkan ke landing page setelah konfirmasi
+            }
+        });
+    </script>
+</body>
+</html>
